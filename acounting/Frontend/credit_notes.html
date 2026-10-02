@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atas Books - Credit Notes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <div class="sidebar">
+            <div class="sidebar-logo"><img src="images/logo.png" alt="Atas Books"></div>
+            <a href="dashboard.html" class="sidebar-link"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
+            <a href="customers.html" class="sidebar-link"><i class="fas fa-users me-2"></i> Customers</a>
+            <a href="vendors.html" class="sidebar-link"><i class="fas fa-truck me-2"></i> Vendors</a>
+            <a href="inventory.html" class="sidebar-link"><i class="fas fa-box me-2"></i> Inventory</a>
+            <a href="invoices.html" class="sidebar-link"><i class="fas fa-file-invoice me-2"></i> Invoices</a>
+            <a href="credit_notes.html" class="sidebar-link active"><i class="fas fa-file-alt me-2"></i> Credit Notes</a>
+            <a href="expenses.html" class="sidebar-link"><i class="fas fa-money-bill-wave me-2"></i> Expenses</a>
+            <a href="reports.html" class="sidebar-link"><i class="fas fa-chart-line me-2"></i> Reports</a>
+            <a href="settings.html" class="sidebar-link"><i class="fas fa-cog me-2"></i> Settings</a>
+        </div>
+
+        <div class="main-content">
+            <div class="top-nav">
+                <h4>Credit Notes</h4>
+                <div>
+                    <span class="text-dark me-3" id="userName">Welcome, User</span>
+                    <a href="#" class="btn btn-primary btn-sm" id="logoutBtn"><i class="fas fa-sign-out-alt me-1"></i> Logout</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="stat-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 style="color: #172554;">All Credit Notes</h5>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createCnModal">
+                                <i class="fas fa-plus me-1"></i> Create Credit Note
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>CN #</th>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                        <th>Reason</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cnTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createCnModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Credit Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createCnForm">
+                        <div class="mb-3">
+                            <label class="form-label">Customer *</label>
+                            <select class="form-control" id="cnCustomer" required>
+                                <option value="">Loading customers...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Credit Note # *</label>
+                            <input type="text" class="form-control" id="cnNumber" value="CN-001" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Amount (KES) *</label>
+                            <input type="number" step="0.01" class="form-control" id="cnAmount" placeholder="0.00" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Reason</label>
+                            <textarea class="form-control" id="cnReason" rows="2" placeholder="e.g. Returned damaged goods"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control" id="cnDate">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Save Credit Note</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/credit_notes.js"></script>
+</body>
+</html>
